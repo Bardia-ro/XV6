@@ -1,0 +1,497 @@
+
+Merging program properties
+
+Removed property 0xc0000002 to merge sh.o (0x3) and usys.o (not found)
+Removed property 0xc0000002 to merge sh.o (not found) and printf.o (0x3)
+Removed property 0xc0000002 to merge sh.o (not found) and umalloc.o (0x3)
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 sh.o
+ .note.gnu.property
+                0x0000000000000000       0x1c sh.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 ulib.o
+ .note.gnu.property
+                0x0000000000000000       0x1c ulib.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 printf.o
+ .note.gnu.property
+                0x0000000000000000       0x1c printf.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 umalloc.o
+ .note.gnu.property
+                0x0000000000000000       0x1c umalloc.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+Address of section .text set to 0x1000
+LOAD sh.o
+LOAD ulib.o
+LOAD usys.o
+LOAD printf.o
+LOAD umalloc.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x8048000))
+                0x0000000008048074                . = (SEGMENT_START ("text-segment", 0x8048000) + SIZEOF_HEADERS)
+
+.interp
+ *(.interp)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash
+ *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rel.text
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rel.rodata
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+
+.rel.data.rel.ro
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+
+.rel.data
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+
+.rel.tdata
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+
+.rel.tbss
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rel.got        0x0000000008048074        0x0
+ *(.rel.got)
+ .rel.got       0x0000000008048074        0x0 sh.o
+
+.rel.bss
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+
+.rel.ifunc
+ *(.rel.ifunc)
+
+.rel.plt        0x0000000008048074        0x0
+ *(.rel.plt)
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+ .rel.iplt      0x0000000008048074        0x0 sh.o
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+
+.init
+ *(SORT_NONE(.init))
+
+.plt            0x0000000008048074        0x0
+ *(.plt)
+ *(.iplt)
+ .iplt          0x0000000008048074        0x0 sh.o
+
+.plt.got
+ *(.plt.got)
+
+.plt.sec
+ *(.plt.sec)
+
+.text           0x0000000000001000     0x1266
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ .text.startup  0x0000000000001000      0x110 sh.o
+                0x0000000000001000                main
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000001110      0xa1d sh.o
+                0x0000000000001110                getcmd
+                0x0000000000001160                panic
+                0x0000000000001180                runcmd
+                0x0000000000001340                fork1
+                0x0000000000001370                execcmd
+                0x00000000000013a0                redircmd
+                0x00000000000013f0                pipecmd
+                0x0000000000001430                listcmd
+                0x0000000000001470                backcmd
+                0x00000000000014b0                gettoken
+                0x0000000000001610                peek
+                0x0000000000001690                parseredirs
+                0x0000000000001740                parseexec
+                0x0000000000001850                parsepipe
+                0x00000000000018c0                parseline
+                0x0000000000001970                parseblock
+                0x0000000000001a00                nulterminate
+                0x0000000000001ac0                parsecmd
+ *fill*         0x0000000000001b2d        0x3 
+ .text          0x0000000000001b30      0x25b ulib.o
+                0x0000000000001b30                strcpy
+                0x0000000000001b60                strcmp
+                0x0000000000001bb0                strlen
+                0x0000000000001bf0                memset
+                0x0000000000001c10                strchr
+                0x0000000000001c50                gets
+                0x0000000000001cd0                stat
+                0x0000000000001d20                atoi
+                0x0000000000001d60                memmove
+ .text          0x0000000000001d8b       0xc0 usys.o
+                0x0000000000001d8b                fork
+                0x0000000000001d93                exit
+                0x0000000000001d9b                wait
+                0x0000000000001da3                pipe
+                0x0000000000001dab                read
+                0x0000000000001db3                write
+                0x0000000000001dbb                close
+                0x0000000000001dc3                kill
+                0x0000000000001dcb                exec
+                0x0000000000001dd3                open
+                0x0000000000001ddb                mknod
+                0x0000000000001de3                unlink
+                0x0000000000001deb                fstat
+                0x0000000000001df3                link
+                0x0000000000001dfb                mkdir
+                0x0000000000001e03                chdir
+                0x0000000000001e0b                dup
+                0x0000000000001e13                getpid
+                0x0000000000001e1b                sbrk
+                0x0000000000001e23                sleep
+                0x0000000000001e2b                uptime
+                0x0000000000001e33                getyear
+                0x0000000000001e3b                mprotect
+                0x0000000000001e43                munprotect
+ *fill*         0x0000000000001e4b        0x5 
+ .text          0x0000000000001e50      0x276 printf.o
+                0x0000000000001f00                printf
+ *fill*         0x00000000000020c6        0xa 
+ .text          0x00000000000020d0      0x196 umalloc.o
+                0x00000000000020d0                free
+                0x0000000000002160                malloc
+ *(.gnu.warning)
+
+.fini
+ *(SORT_NONE(.fini))
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x0000000000002268      0x101
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.1
+                0x0000000000002268       0xb7 sh.o
+                                         0xc0 (size before relaxing)
+ *fill*         0x000000000000231f        0x1 
+ .rodata        0x0000000000002320       0x30 sh.o
+ .rodata.str1.1
+                0x0000000000002350        0x7 printf.o
+ *fill*         0x0000000000002357        0x1 
+ .rodata        0x0000000000002358       0x11 printf.o
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x000000000000236c      0x5bc
+ *(.eh_frame)
+ .eh_frame      0x000000000000236c      0x364 sh.o
+ .eh_frame      0x00000000000026d0      0x17c ulib.o
+                                        0x194 (size before relaxing)
+ .eh_frame      0x000000000000284c       0x60 printf.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x00000000000028ac       0x7c umalloc.o
+                                         0x94 (size before relaxing)
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x0000000000002928                . = .
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x0000000000002928        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x0000000000002928        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x0000000000002928        0x0
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x0000000000002928        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+
+.dynamic
+ *(.dynamic)
+
+.got            0x0000000000002928        0x0
+ *(.got)
+ .got           0x0000000000002928        0x0 sh.o
+ *(.igot)
+
+.got.plt        0x0000000000002928        0x0
+ *(.got.plt)
+ .got.plt       0x0000000000002928        0x0 sh.o
+ *(.igot.plt)
+ .igot.plt      0x0000000000002928        0x0 sh.o
+
+.data           0x0000000000002928        0xe
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000000002928        0xe sh.o
+                0x0000000000002928                symbols
+                0x0000000000002930                whitespace
+ .data          0x0000000000002936        0x0 ulib.o
+ .data          0x0000000000002936        0x0 usys.o
+ .data          0x0000000000002936        0x0 printf.o
+ .data          0x0000000000002936        0x0 umalloc.o
+
+.data1
+ *(.data1)
+                0x0000000000002936                _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000002936                . = .
+                0x0000000000002936                __bss_start = .
+
+.bss            0x0000000000002940       0x70
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000002940       0x64 sh.o
+ .bss           0x00000000000029a4        0x0 ulib.o
+ .bss           0x00000000000029a4        0x0 usys.o
+ .bss           0x00000000000029a4        0x0 printf.o
+ .bss           0x00000000000029a4        0xc umalloc.o
+ *(COMMON)
+                0x00000000000029b0                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x00000000000029b0                . = ALIGN (0x4)
+                0x00000000000029b0                . = SEGMENT_START ("ldata-segment", .)
+                0x00000000000029b0                . = ALIGN (0x4)
+                0x00000000000029b0                _end = .
+                [!provide]                        PROVIDE (end = .)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x2b
+ *(.comment)
+ .comment       0x0000000000000000       0x2b sh.o
+                                         0x2c (size before relaxing)
+ .comment       0x000000000000002b       0x2c ulib.o
+ .comment       0x000000000000002b       0x2c printf.o
+ .comment       0x000000000000002b       0x2c umalloc.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000       0xa8
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x28 sh.o
+ .debug_aranges
+                0x0000000000000028       0x20 ulib.o
+ .debug_aranges
+                0x0000000000000048       0x20 usys.o
+ .debug_aranges
+                0x0000000000000068       0x20 printf.o
+ .debug_aranges
+                0x0000000000000088       0x20 umalloc.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000     0x19f2
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000      0xf72 sh.o
+ .debug_info    0x0000000000000f72      0x46a ulib.o
+ .debug_info    0x00000000000013dc       0x26 usys.o
+ .debug_info    0x0000000000001402      0x3b5 printf.o
+ .debug_info    0x00000000000017b7      0x23b umalloc.o
+
+.debug_abbrev   0x0000000000000000      0x80b
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x2fb sh.o
+ .debug_abbrev  0x00000000000002fb      0x186 ulib.o
+ .debug_abbrev  0x0000000000000481       0x14 usys.o
+ .debug_abbrev  0x0000000000000495      0x1c0 printf.o
+ .debug_abbrev  0x0000000000000655      0x1b6 umalloc.o
+
+.debug_line     0x0000000000000000     0x100a
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000      0x7f5 sh.o
+ .debug_line    0x00000000000007f5      0x2b9 ulib.o
+ .debug_line    0x0000000000000aae       0x4d usys.o
+ .debug_line    0x0000000000000afb      0x2e3 printf.o
+ .debug_line    0x0000000000000dde      0x22c umalloc.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x0000000000000000      0x34e
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x251 sh.o
+                                        0x286 (size before relaxing)
+ .debug_str     0x0000000000000251       0x67 ulib.o
+                                        0x1b7 (size before relaxing)
+ .debug_str     0x00000000000002b8       0x13 usys.o
+                                         0x2b (size before relaxing)
+ .debug_str     0x00000000000002cb       0x2f printf.o
+                                        0x166 (size before relaxing)
+ .debug_str     0x00000000000002fa       0x54 umalloc.o
+                                        0x195 (size before relaxing)
+
+.debug_loc      0x0000000000000000     0x120f
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000      0x756 sh.o
+ .debug_loc     0x0000000000000756      0x3aa ulib.o
+ .debug_loc     0x0000000000000b00      0x4de printf.o
+ .debug_loc     0x0000000000000fde      0x231 umalloc.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x0000000000000000       0xd8
+ *(.debug_ranges)
+ .debug_ranges  0x0000000000000000       0x68 sh.o
+ .debug_ranges  0x0000000000000068       0x58 printf.o
+ .debug_ranges  0x00000000000000c0       0x18 umalloc.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(_sh elf32-i386)
